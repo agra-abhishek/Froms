@@ -11,14 +11,14 @@ const app = express();
 // Middleware
 app.use(express.json());
 
-// 👉 Serve frontend (index.html inside /public folder)
+
 app.use(express.static(path.join(__dirname, "public")));
 
 // Routes
 const userRoutes = require("./routes/userRoutes");
 app.use("/api/users", userRoutes);
 
-// ✅ Fallback route for SPA or unknown routes (Express 5 safe)
+
 app.use((req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
